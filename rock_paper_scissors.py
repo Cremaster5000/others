@@ -14,8 +14,10 @@ options = {"Rock":"Paper", "Paper":"Scissors", "Scissors":"Rock"}
 
 def play():
     print(instructions)
+    time.sleep(2)
     while True:
-        player = input("Write your move:")
+        system('clear')
+        player = input("Write your move: ")
         if player == "Exit": break
         elif player == "Help": print(instructions)
         elif player in options: 
@@ -25,7 +27,6 @@ def play():
             else: print("Draw")
         else: print("Invalid option")
         time.sleep(3)
-        system('clear')
             
 def draw():
     global options
@@ -33,4 +34,5 @@ def draw():
     print(selection)
     return selection
 
-play()
+if __name__ == '__main__':
+    play()

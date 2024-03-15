@@ -25,18 +25,19 @@ def runChrono(run):
             if minu >= 60:
                 minu = 0
             
-run = 4
-results = [] #this is important to verify the auto adjustment
-init = datetime.now() #the first time we measure time of execution
-runChrono(run)
-passed_time = datetime.now()-init #total time executing the function
-results.append(f"passed_time: {passed_time} ,wait:{wait}")
-while passed_time.seconds != run:
-    if passed_time.seconds > run: wait -= 0.0001 #little adjustment
-    else: wait += 0.0001 #looking for fine tuning
-    init = datetime.now() #on every loop we measure time of execution
+if __name__ == '__main__':
+    run = 4
+    results = [] #this is important to verify the auto adjustment
+    init = datetime.now() #the first time we measure time of execution
     runChrono(run)
-    passed_time = datetime.now()-init
-    results.append(f"passed_time:{passed_time}, wait:{wait}")
-print(results)
-    
+    passed_time = datetime.now()-init #total time executing the function
+    results.append(f"passed_time: {passed_time} ,wait:{wait}")
+    while passed_time.seconds != run:
+        if passed_time.seconds > run: wait -= 0.0001 #little adjustment
+        else: wait += 0.0001 #looking for fine tuning
+        init = datetime.now() #on every loop we measure time of execution
+        runChrono(run)
+        passed_time = datetime.now()-init
+        results.append(f"passed_time:{passed_time}, wait:{wait}")
+    print(results)
+        
